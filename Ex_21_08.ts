@@ -135,6 +135,15 @@ Crie um módulo chamado Cliente.ts, que exporta uma classe Cliente com as propri
 Crie um segundo módulo chamado Pedido.ts, que importará a classe Cliente e adicionará a classe Pedido, com as propriedades cliente (objeto do tipo Cliente), produto (string) e valor (number).
 Instancie objetos da classe Pedido e crie uma função que exiba o nome do cliente, o produto e o valor total do pedido.
 */
+// Importação da classe Pedido
+import { Pedido } from './Pedido';
+import { Cliente } from './Cliente';
+
+// Criação de instâncias de Pedido e Cliente
+const clienteExemplo = new Cliente('Mateus', 'mboihagian@gmail.com');
+const pedidoExemplo = new Pedido(clienteExemplo, 'Xbox', 3200);
+
+console.log(pedidoExemplo.exibirPedido());
 
 /*
 Exercício 2:
@@ -143,3 +152,13 @@ Crie um namespace chamado Financeiro, que contenha duas funções: calcularImpos
 Dentro do namespace, adicione uma classe Orcamento, com as propriedades valorTotal (number) e itens (array de strings).
 Crie um arquivo separado onde você utilizará esse namespace, instanciando a classe Orcamento e utilizando as funções de cálculo de imposto e desconto para modificar o valor total.
 */
+import { Financeiro } from './Financeiro';
+
+const orcamentoExemplo = new Financeiro.Orcamento(5000, ['Xbox', 'Controle']);
+console.log(orcamentoExemplo.exibirOrcamento());
+
+const valorComImposto = Financeiro.calcularImposto(5000, 0.15);
+console.log(`Valor com Imposto: R$${valorComImposto.toFixed(2)}`);
+
+const valorComDesconto = Financeiro.calcularDesconto(5000, 0.10);
+console.log(`Valor com Desconto: R$${valorComDesconto.toFixed(2)}`);
